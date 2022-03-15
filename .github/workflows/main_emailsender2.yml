@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy JAR app to Azure Web App - emailsender2
+name: Build and deploy WAR app to Azure Web App - emailsender2
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/target/*.war'
 
   deploy:
     runs-on: windows-latest
@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'emailsender2'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1BB023DC9BF34D608160B868645FA9BA }}
-          package: '*.jar'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C959394605904073ABD12DE4BC0CD3A6 }}
+          package: '*.war'

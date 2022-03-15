@@ -14,7 +14,7 @@ import javax.mail.MessagingException;
 @Slf4j
 public class SendEmailService {
 
-   
+
     private final JavaMailSender envioEmailDoJava;
 
     public SendEmailService(final JavaMailSender javaMailSender) {

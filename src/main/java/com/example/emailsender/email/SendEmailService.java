@@ -1,23 +1,21 @@
 package com.example.emailsender.email;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
 import javax.mail.MessagingException;
+
 @AllArgsConstructor
 @Service
 @Slf4j
 public class SendEmailService {
 
-    @Autowired
     private final JavaMailSender envioEmailDoJava;
-
 
     public void enviarEmailComAnexo(String para, String titulo, String message, String logo)
             throws MessagingException {

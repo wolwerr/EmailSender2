@@ -10,6 +10,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @Service
 @Slf4j

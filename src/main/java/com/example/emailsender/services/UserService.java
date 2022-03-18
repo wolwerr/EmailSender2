@@ -31,7 +31,7 @@ public class UserService {
         this.sendEmailService.enviarEmailComAnexo(
                 user.getEmail(),
                 EmailMessages.createTitle(user),
-                EmailMessages.messageToNewUserLogo(user, user.getPhone()) + "\n\n", "/logo/mario.gif");
+                EmailMessages.messageToNewUserLogo(user) + "\n\n", "/logo/mario.gif");
 
         return userRepository.save(newUser);
     }
@@ -48,7 +48,8 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-
-
+    public User updateUser(User user){
+        return userRepository.save(user);
+    }
 
 }

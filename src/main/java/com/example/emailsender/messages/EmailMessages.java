@@ -23,7 +23,7 @@ public class EmailMessages {
                 +"Is very important access your account and change your password.\n"
                 +"www.ataria.dev";
     }
-    public static String messageToNewUserLogo(User user, String password){
+    public static String messageToNewUserLogo(User user){
         return
 
                 "<div>Olá " + user.getName() +"! Obrigado pelo contato. "

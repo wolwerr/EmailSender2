@@ -3,6 +3,7 @@ package com.example.emailsender.controller;
 import com.example.emailsender.model.User;
 import com.example.emailsender.repositories.UserRepository;
 import com.example.emailsender.services.UserService;
+import com.rabbitmq.tools.json.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +46,10 @@ public class UserController {
     public ResponseEntity<User> getUserByID(@PathVariable("id") Long id) throws Exception {
         return ResponseEntity.ok(userService.getById(id).orElseThrow(() -> new NoSuchElementException("Not found")));
     }
+
+    @PutMapping("/user/{id}")
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
 }

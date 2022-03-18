@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
-import javax.persistence.Id;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,7 +28,7 @@ public class UserService {
 
     public User save(User user) throws MessagingException {
 
-        var newUser = new User(user.getUserId(), user.getName(), user.getEmail(), user.getPhone(), user.getMessage());
+        var newUser = new User(user.getId(), user.getName(), user.getEmail(), user.getPhone(), user.getMessage());
 
         this.sendEmailService.enviarEmailComAnexo(
                 user.getEmail(),
@@ -43,8 +42,8 @@ public class UserService {
         return userRepository.findAll(pageable);
     }
 
-    public Optional<User> findById(UUID userId){
-        return userRepository.findById(userId);
+    public Optional<User> findById(Long id){
+        return userRepository.findById(id);
     }
 
 

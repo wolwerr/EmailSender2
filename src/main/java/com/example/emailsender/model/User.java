@@ -3,8 +3,6 @@ package com.example.emailsender.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.UUID;
 
 @Builder
 @AllArgsConstructor
@@ -14,12 +12,11 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private UUID userId;
+    private Long id;
     private String name;
     private String email;
     private String phone;

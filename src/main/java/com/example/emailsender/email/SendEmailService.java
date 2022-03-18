@@ -1,5 +1,6 @@
 package com.example.emailsender.email;
 
+import com.example.emailsender.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,7 +36,5 @@ public class SendEmailService {
 
         envioEmailDoJava.send(mensagem);
         log.info("Email com anexo enviado com sucesso");
-
-
     }
 }

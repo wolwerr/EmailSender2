@@ -35,7 +35,7 @@ public class UserService {
                 EmailMessages.createTitle(user),
                 EmailMessages.messageToNewUserLogo(user, user.getPhone()) + "\n\n", "/logo/mario.gif");
 
-        return newUser;
+        return userRepository.save(newUser);
     }
 
     public Page<User> findAll(Pageable pageable){

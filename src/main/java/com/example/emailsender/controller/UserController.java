@@ -29,7 +29,7 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<User> save(@RequestBody User users) throws MessagingException {
-        return new ResponseEntity<>(userRepository.save(users), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.save(users), HttpStatus.CREATED);
     }
 
     @GetMapping("/users")

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -38,8 +39,12 @@ public class UserService {
         return userRepository.save(newUser);
     }
 
-    public Page<User> findAll(Pageable pageable){
-        return userRepository.findAll(pageable);
+//    public Page<User> findAll(Pageable pageable){
+//        return userRepository.findAll(pageable);
+//    }
+
+      public List<User> findAll(){
+        return userRepository.findAll();
     }
 
     public Optional<User> findById(Long id){

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -32,9 +33,14 @@ public class UserController {
         return new ResponseEntity<>(userService.save(users), HttpStatus.CREATED);
     }
 
+//    @GetMapping("/users")
+//    public ResponseEntity<Page<User>> getAllUsers(@PageableDefault(page = 0, size = 5)Pageable pageable){
+//        return new ResponseEntity<>(userService.findAll(pageable), HttpStatus.OK);
+//    }
+
     @GetMapping("/users")
-    public ResponseEntity<Page<User>> getAllUsers(@PageableDefault(page = 0, size = 5)Pageable pageable){
-        return new ResponseEntity<>(userService.findAll(pageable), HttpStatus.OK);
+    public List<User> getAllUsers(){
+        return userService.findAll();
     }
 
     @GetMapping("/users/{userId}")

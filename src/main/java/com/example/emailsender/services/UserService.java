@@ -5,14 +5,11 @@ import com.example.emailsender.email.SendEmailService;
 import com.example.emailsender.messages.EmailMessages;
 import com.example.emailsender.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 
 @Service
@@ -47,9 +44,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> findById(Long id){
+    public Optional<User> getById(Long id){
         return userRepository.findById(id);
     }
+
 
 
 

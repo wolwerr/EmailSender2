@@ -4,16 +4,14 @@ import com.example.emailsender.model.User;
 import com.example.emailsender.repositories.UserRepository;
 import com.example.emailsender.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
+
 
 @RestController
 public class UserController {
@@ -43,14 +41,8 @@ public class UserController {
         return userService.findAll();
     }
 
-    @GetMapping("/users/{userId}")
-    public ResponseEntity<Object> getOneUser(@PathVariable(value ="userDto")Long id){
-        Optional<User> userOptional=userService.findById((id));
-        Optional<Object> userOptinal = null;
-        if(!userOptinal.isPresent()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-        }else{
-            return ResponseEntity.status(HttpStatus.OK).body(userOptional.get());
-        }
+    @GetMapping("/user/{id}")
+    public ResponseEntity<User> getUserByID(@PathVariable("id") Long id) throws Exception {
+        return ResponseEntity.ok(userService.getById(id).orElseThrow(() -> new NoSuchElementException("Not found")));
     }
 }
